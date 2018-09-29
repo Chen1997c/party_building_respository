@@ -36,6 +36,7 @@ spring:
     mode: LEGACYHTML5
 server:
   port: 9084
+  path: http://172.16.10.32:9080/api/cms/
 
 management.security.enabled: false
 
@@ -59,7 +60,8 @@ security:
       accessTokenUri: http://localhost:9099/oauth/token
       grant-type: client_credentials
       scope: server
-
+file:
+  path: /cms/image/
 
 
 
