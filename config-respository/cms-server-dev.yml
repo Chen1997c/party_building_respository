@@ -37,6 +37,11 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 server:
   port: 9084
   path: http://172.16.10.32:9080/api/cms/
