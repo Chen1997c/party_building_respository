@@ -10,6 +10,9 @@ spring:
   server:
     tomcat:
       uri-encoding: UTF-8
+  sleuth:
+    sampler:
+      percentage: 1.0
 server:
   port: 9080
 #网关反向代理配置
