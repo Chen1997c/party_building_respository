@@ -34,6 +34,9 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
+  sleuth:
+    sampler:
+      percentage: 1.0
 server:
   port: 9084
   path: http://172.16.10.32:9080/api/cms/
