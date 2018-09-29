@@ -1,0 +1,68 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://120.78.214.165:3306/cms?autoReconnect=true&useSSL=false&characterEncoding=utf-8 #(useSSL  添加为 false)
+      username: root
+      password: Aliyung9b823ng*#
+      test-on-borrow: true
+      test-while-idle: true
+      validation-query: SELECT 1
+      connection-test-query: SELECT 1
+      validation-interval: 10000
+  jpa:
+    hibernate:
+      ddl-auto: update  #(update,create)
+    show-sql: false
+#redis 缓存的使用
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    timeout: 20000
+    pool:
+      max-active: 8
+      min-idle: 0
+      max-idle: 8
+      max-wait: -1
+  http:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  mvc.static-path-pattern: /**
+  resources:
+    static-locations: classpath\:/META-INF/resources/,classpath\:/resources/,classpath\:/static/,classpath\:/public/,file\:${file.path}
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+server:
+  port: 9084
+
+management.security.enabled: false
+
+feign:
+  hystirx:
+    enabled: true
+ribbon:  #饥饿加载
+  ReadTimeout: 15000
+  ConnectTimeout: 15000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+security:
+  oauth2:
+    resource:
+      id: cms-server
+      user-info-uri: http://localhost:9080/api/uaa/user
+      prefer-token-info: false
+    client:
+      clientId: cms-server
+      clientSecret: tempPassword
+      accessTokenUri: http://localhost:9099/oauth/token
+      grant-type: client_credentials
+      scope: server
+
+
+
+
+
+
+
