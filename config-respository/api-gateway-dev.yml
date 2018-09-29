@@ -1,0 +1,67 @@
+spring:
+  http:
+      encoding:
+        charset: UTF-8
+        force: true
+        enabled: true
+      multipart:
+        max-file-size: 20Mb
+        max-request-size: 20Mb
+  server:
+    tomcat:
+      uri-encoding: UTF-8
+server:
+  port: 9080
+#网关反向代理配置
+zuul:
+  prefix: /api
+  routes:
+    uaa:
+      path: /uaa/**
+      sensitiveHeaders:
+      serviceId: auth-server
+    order:
+      path: /order/**
+      sensitiveHeaders:
+      serviceId: order-service
+    ebook:
+      path: /ebook/**
+      sensitiveHeaders:
+      serviceId: ebook-server
+    cms:
+      path: /cms/**
+      sensitiveHeaders:
+      serviceId: cms-server
+    online-test:
+      path: /online-test/**
+      sensitiveHeaders:
+      serviceId: online-test-server
+    sign:
+      path: /sign/**
+      sensitiveHeaders:
+      serviceId: sign-server
+  add-proxy-headers: true
+  ignored-services: '*'
+#负载均衡配置
+ribbon:        #饥饿加载
+  eager-load:
+      enabled: true
+  ReadTimeout: 30000 
+  ConnectTimeout: 30000 
+  MaxAutoRetries: 1 
+  MaxAutoRetriesNextServer: 1 
+  eureka: 
+    enabled: true
+#eureka客户端ribbon刷新时间
+  ServerListRefreshInterval: 5000
+  
+#链路熔断配置     
+hystrix: 
+  command: 
+    default: 
+      execution: 
+        timeout: 
+          enabled: true 
+        isolation: 
+          thread: 
+            timeoutInMilliseconds: 60000 
