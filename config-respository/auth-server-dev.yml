@@ -16,6 +16,9 @@ spring:
         connectionTimeout: 30000
         idleTimeout: 600000
         connection-test-query: SELECT 1
+  sleuth:
+    sampler:
+      percentage: 1.0
 security:
   oauth2:
     resource:
