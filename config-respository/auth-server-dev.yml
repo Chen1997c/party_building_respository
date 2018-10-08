@@ -29,4 +29,4 @@ security:
     resource:
       filter-order: 3
 init-password: 123
-test.key: key1
+test.key: key1xxxxxx
