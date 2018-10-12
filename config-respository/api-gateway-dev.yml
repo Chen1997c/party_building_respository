@@ -19,7 +19,7 @@ spring:
     username: guest
     password: guest
 server:
-  port: 9080
+  port: 9081
 #网关反向代理配置
 zuul:
   prefix: /api
